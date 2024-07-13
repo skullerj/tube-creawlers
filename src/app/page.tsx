@@ -1,10 +1,8 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-
+import { RouteForm } from "./form";
 export default function Home() {
 	return (
-		<main className="flex">
-			<Button>Clicks can now be done</Button>
+		<main className="flex w-100 flex-col">
+			<RouteForm />
 		</main>
 	);
 }

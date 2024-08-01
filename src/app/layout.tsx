@@ -19,7 +19,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={cn(
-					"main-h-screen bg-background font-sans atialised",
+					"flex w-screen h-screen flex-col items-center p-4 bg-background font-sans atialised",
 					fontSans.variable,
 				)}
 			>

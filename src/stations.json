@@ -1,53 +1,30 @@
 {
-    "stations": [
-        {
-            "name": "Clapham North",
-            "line": [
-                "northern"
-            ]
-        },
-        {
-            "name": "Clapham South",
-            "line": [
-                "northern"
-            ]
-        },
-        {
-            "name": "Clapham Common",
-            "line": [
-                "northern"
-            ]
-        },
-        {
-            "name": "Stockwell",
-            "line": [
-                "northern",
-                "victoria"
-            ]
-        },
-        {
-            "name": "Brixton",
-            "line": [
-                "victoria"
-            ]
-        }
-    ],
-    "connections": [
-        [
-            "Clapham North",
-            "Clapham Common"
-        ],
-        [
-            "Clapham Common",
-            "Clapham South"
-        ],
-        [
-            "Clapham North",
-            "Stockwell"
-        ],
-        [
-            "Stockwell",
-            "Brixton"
-        ],
-    ]
+	"stations": [
+		{
+			"name": "Clapham North",
+			"line": ["northern"]
+		},
+		{
+			"name": "Clapham South",
+			"line": ["northern"]
+		},
+		{
+			"name": "Clapham Common",
+			"line": ["northern"]
+		},
+		{
+			"name": "Stockwell",
+			"line": ["northern", "victoria"]
+		},
+		{
+			"name": "Brixton",
+			"line": ["victoria"]
+		}
+	],
+	"connections": [
+		["Clapham North", "Clapham Common"],
+		["Clapham Common", "Clapham South"],
+		["Clapham North", "Stockwell"],
+		["Stockwell", "Brixton"]
+	]
 }

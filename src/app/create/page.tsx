@@ -19,24 +19,43 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import {
+	FieldArrayPath,
+	useFieldArray,
+	useForm,
+	useWatch,
+} from "react-hook-form";
 import { z } from "zod";
 
 import stations from "../../stations.json";
 
 const schema = z.object({
 	name: z.string().min(2, "Needs to have at least 2 characters"),
-	from: z.string({ message: "Select the starting station" }),
-	to: z.string({ message: "Select the ending station" }),
+	stops: z
+		.array(
+			z.object({
+				name: z.string({ message: "You need to select a stop" }),
+			}),
+		)
+		.min(2, "You need to add at least 2 stops"),
 });
+
 export default function Create() {
-	const form = useForm({
+	const form = useForm<z.infer<typeof schema>>({
 		resolver: zodResolver(schema),
 		defaultValues: {
 			name: "",
-			from: "",
-			to: "",
+			stops: [{ name: "" }],
 		},
+	});
+	const stops = useFieldArray({
+		control: form.control,
+		name: "stops",
+	});
+
+	const stopsWatch = useWatch({
+		name: "stops",
+		control: form.control,
 	});
 	return (
 		<Form {...form}>
@@ -60,54 +79,43 @@ export default function Create() {
 						</FormItem>
 					)}
 				/>
-				<FormField
-					name="from"
-					control={form.control}
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>From</FormLabel>
-							<Select onValueChange={field.onChange} defaultValue={field.value}>
-								<FormControl>
-									<SelectTrigger>
-										<SelectValue placeholder="From" />
-									</SelectTrigger>
-								</FormControl>
-								<SelectContent>
-									{stations.stations.map(({ name }) => (
-										<SelectItem key={name} value={name}>
-											{name}
-										</SelectItem>
-									))}
-								</SelectContent>
-							</Select>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					name="to"
-					control={form.control}
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>To</FormLabel>
-							<Select onValueChange={field.onChange} defaultValue={field.value}>
-								<FormControl>
-									<SelectTrigger>
-										<SelectValue placeholder="To" />
-									</SelectTrigger>
-								</FormControl>
-								<SelectContent>
-									{stations.stations.map(({ name }) => (
-										<SelectItem key={name} value={name}>
-											{name}
-										</SelectItem>
-									))}
-								</SelectContent>
-							</Select>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
+				{stops.fields.map((item, index) => (
+					<FormField
+						name={`stops.${index}.name`}
+						key={item.id}
+						control={form.control}
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Stop number</FormLabel>
+								<Select
+									onValueChange={field.onChange}
+									defaultValue={field.value}
+								>
+									<FormControl>
+										<SelectTrigger>
+											<SelectValue placeholder="From" />
+										</SelectTrigger>
+									</FormControl>
+									<SelectContent>
+										{stations.stations.map(({ name }) => (
+											<SelectItem key={name} value={name}>
+												{name}
+											</SelectItem>
+										))}
+									</SelectContent>
+								</Select>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				))}
+
+				<Button
+					disabled={!stopsWatch[stopsWatch.length - 1]?.name}
+					onClick={() => stops.append({ name: "" })}
+				>
+					Add Stop
+				</Button>
 				<Button type="submit">Create Route</Button>
 			</form>
 		</Form>

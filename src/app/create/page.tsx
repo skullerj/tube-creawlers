@@ -28,6 +28,7 @@ import {
 import { z } from "zod";
 
 import stations from "../../stations.json";
+import StopSelector from "./components/stop-selector";
 
 const schema = z.object({
 	name: z.string().min(2, "Needs to have at least 2 characters"),
@@ -96,13 +97,7 @@ export default function Create() {
 											<SelectValue placeholder="From" />
 										</SelectTrigger>
 									</FormControl>
-									<SelectContent>
-										{stations.stations.map(({ name }) => (
-											<SelectItem key={name} value={name}>
-												{name}
-											</SelectItem>
-										))}
-									</SelectContent>
+									<StopSelector />
 								</Select>
 								<FormMessage />
 							</FormItem>

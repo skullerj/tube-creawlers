@@ -4,3 +4,7 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
+
+export function fetcher(...args: Parameters<typeof fetch>) {
+	return fetch(...args).then((res) => res.json());
+}

@@ -11,23 +11,11 @@ import {
 	Form,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-	FieldArrayPath,
-	useFieldArray,
-	useForm,
-	useWatch,
-} from "react-hook-form";
+import { useFieldArray, useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 
-import stations from "../../stations.json";
 import StopSelector from "./components/stop-selector";
 
 const schema = z.object({
@@ -71,7 +59,7 @@ export default function Create() {
 						<FormItem>
 							<FormLabel>Route Name</FormLabel>
 							<FormControl>
-								<Input {...field} placeholder="name" />
+								<Input {...field} placeholder="My favourite route" />
 							</FormControl>
 							<FormDescription>
 								This is the name for your route.
@@ -87,7 +75,7 @@ export default function Create() {
 						control={form.control}
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Stop number</FormLabel>
+								<FormLabel>Stop number {index + 1}</FormLabel>
 								<Select
 									onValueChange={field.onChange}
 									defaultValue={field.value}

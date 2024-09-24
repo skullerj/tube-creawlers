@@ -19,3 +19,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Features - Todo List
+
+- Log in - The user can log in to identify himself (TC-01)
+- Route Creation - The user can create a route and save it for later (TC-02)
+- Route Browsing - The user can see a list of the routes published by other users (TC-03)
+- Route Voting - The user can vote on the routes that he likes (TC-04)
+  - Define a voting system, try to stay away from 1 to 10 ratings, imagine something more "fun" and "train related" and "on track"

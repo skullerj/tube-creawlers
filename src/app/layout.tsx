@@ -8,8 +8,8 @@ import Nav from "./nav";
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-	title: "Create Next App",
-	description: "An app to help Londoners crawl the tube effeciently.",
+	title: "Tube Crawlers",
+	description: "App to save and share your trip ideas inside London",
 };
 
 export default function RootLayout({

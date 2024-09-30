@@ -14,7 +14,7 @@ export default function Nav() {
 				<Link href="/home" className={pathname === "/home" ? "underline" : ""}>
 					Home
 				</Link>
-				{!user && <a href="/api/auth/logout">Log Out</a>}
+				{user && <a href="/api/auth/logout">Log Out</a>}
 			</div>
 		</nav>
 	);

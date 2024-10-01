@@ -1,15 +1,18 @@
+import { describe } from "node:test";
 import { expect, test } from "@playwright/test";
 
-test("Go to landing page", async ({ page }) => {
-	await page.goto("/");
+describe("Navigating to landing and restricted pages", () => {
+	test("Go to landing page", async ({ page }) => {
+		await page.goto("/");
 
-	await expect(page).toHaveTitle("Tube Crawlers");
-});
+		await expect(page).toHaveTitle("Tube Crawlers");
+	});
 
-test("Got to home page and get redirected to / as user is not logged in", async ({
-	page,
-}) => {
-	await page.goto("/home");
+	test("Got to home page and get redirected to the auth provider", async ({
+		page,
+	}) => {
+		await page.goto("/home");
 
-	await expect(page).toHaveURL("http://localhost:3000/");
+		await expect(page).toHaveURL(/(auth0.com){1}/);
+	});
 });

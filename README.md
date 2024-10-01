@@ -25,7 +25,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Log in - The user can log in to identify himself (TC-01)
   - ~~The user can log in and out~~
   - ~~Ther user sees a welcome page when he is outside of the app and the home page when he is logged in. Top right there is a button to log out.~~
-  - Create some tests for the login
+  - Create two tests, one that checks that the user without authentication can't see he home page and another one that checks that he can after logging in.
   - As this would be the first PR, setup some github actions to run those tests
 - Route Creation - The user can create a route and save it for later (TC-02)
 - Route Browsing - The user can see a list of the routes published by other users (TC-03)
